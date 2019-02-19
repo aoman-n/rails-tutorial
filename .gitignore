@@ -21,3 +21,10 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore Spring files.
+/spring/*.pid
+
+# practice file
+practice.rb
+example_user.rb
