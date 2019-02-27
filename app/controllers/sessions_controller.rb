@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      # errorメッセージを作成する
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
 
-  def destory
+  def destroy
+    log_out
+    redirect_to root_url
   end
 
 end
