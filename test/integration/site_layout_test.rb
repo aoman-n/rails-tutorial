@@ -18,4 +18,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "title", full_title("Sign up")
   end
 
+  # TODO: ログイン、非ログイン状態で全てのリンクが正しく動作するかテストを書く
+  # 10.3.1の演習問題
+
 end
