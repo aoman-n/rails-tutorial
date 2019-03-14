@@ -28,3 +28,6 @@
 # practice file
 practice.rb
 example_user.rb
+
+# gem files
+vendor/
