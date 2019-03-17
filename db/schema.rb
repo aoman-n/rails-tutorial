@@ -13,6 +13,6 @@
 ActiveRecord::Schema.define(version: 20190316060629) do
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type 'strign' for column 'reset_digest'
+#   Unknown type 'string' for column 'reset_digest'
 
 end

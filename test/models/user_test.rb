@@ -13,7 +13,7 @@
 #  activation_digest :string
 #  activated         :boolean          default(FALSE)
 #  activated_at      :datetime
-#  reset_digest      :strign
+#  reset_digest      :string
 #  reset_sent_at     :datetime
 #
 
