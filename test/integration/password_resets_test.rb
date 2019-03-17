@@ -31,7 +31,6 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     get edit_password_reset_path(user.reset_token, email: user.email)
     assert_redirected_to root_url
     user.toggle!(:activated)
-
     # メールアドレスが有効で、トークンが無効
     get edit_password_reset_path("wrong token", email: user.email)
     assert_redirected_to root_url
@@ -59,6 +58,18 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert is_logged_in?
     assert_not flash.empty?
     assert_redirected_to user
+  end
+
+  test "expired token" do
+    get new_password_reset_path
+    post password_resets_path, params: { password_reset: { email: @user.email } }
+    @user.update_attribute(:reset_sent_at, 3.hours.ago)
+    user = assigns(:user)
+    get edit_password_reset_path(user.reset_token, email: user.email)
+    assert_not flash.empty?
+    assert_redirected_to new_password_reset_url
+    follow_redirect!
+    assert_match /expired/i, response.body
   end
 
 end
