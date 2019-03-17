@@ -25,6 +25,8 @@ group :development do
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
   gem 'pry-byebug'
+  gem 'rb-readline'
+  gem 'annotate'
 end
 
 group :test do
