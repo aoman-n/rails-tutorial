@@ -31,3 +31,6 @@ example_user.rb
 
 # gem files
 vendor/
+
+# picture files
+public/uploads/
