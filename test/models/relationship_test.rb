@@ -21,4 +21,14 @@ class RelationshipTest < ActiveSupport::TestCase
     assert_not @relationship.valid?
   end
 
+  test "should follow and unfollow a user" do
+    michael = users(:michael)
+    aoba = users(:aoba)
+    assert_not michael.following?(aoba)
+    michael.follow(aoba)
+    assert michael.following?(aoba)
+    michael.unfollow(aoba)
+    assert_not michael.following?(aoba)
+  end
+
 end
