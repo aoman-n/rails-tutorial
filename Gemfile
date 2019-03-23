@@ -29,6 +29,8 @@ group :development do
   gem 'pry-byebug'
   gem 'rb-readline'
   gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
