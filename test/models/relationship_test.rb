@@ -27,6 +27,7 @@ class RelationshipTest < ActiveSupport::TestCase
     assert_not michael.following?(aoba)
     michael.follow(aoba)
     assert michael.following?(aoba)
+    assert aoba.followers.include?(michael)
     michael.unfollow(aoba)
     assert_not michael.following?(aoba)
   end
