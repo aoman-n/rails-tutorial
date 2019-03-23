@@ -14,8 +14,8 @@ require 'test_helper'
 class RelationshipTest < ActiveSupport::TestCase
 
   def setup
-    @relationship = Relationship.new(follower_id: users(:michael).id,
-                                     followed_id: users(:aoba).id)
+    @relationship = Relationship.new(follower_id: users(:lana).id,
+                                     followed_id: users(:malory).id)
   end
 
   test "should be valid" do
@@ -33,14 +33,14 @@ class RelationshipTest < ActiveSupport::TestCase
   end
 
   test "should follow and unfollow a user" do
-    michael = users(:michael)
-    aoba = users(:aoba)
-    assert_not michael.following?(aoba)
-    michael.follow(aoba)
-    assert michael.following?(aoba)
-    assert aoba.followers.include?(michael)
-    michael.unfollow(aoba)
-    assert_not michael.following?(aoba)
+    lana = users(:lana)
+    malory = users(:malory)
+    assert_not lana.following?(malory)
+    lana.follow(malory)
+    assert lana.following?(malory)
+    assert malory.followers.include?(lana)
+    lana.unfollow(malory)
+    assert_not lana.following?(malory)
   end
 
 end
