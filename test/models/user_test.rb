@@ -103,4 +103,22 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "feed should have a right posts" do
+    michael = users(:michael)
+    aoba = users(:aoba)
+    malory = users(:malory)
+    # フォローしているユーザーの投稿を確認
+    aoba.microposts.each do |post_following|
+      assert michael.feed.include?(post_following)
+    end
+    # 自分自身の投稿を確認
+    michael.microposts.each do |post_self|
+      assert michael.feed.include?(post_self)
+    end
+    # フォローしていないユーザーの投稿を確認
+    malory.microposts.each do |post_unfollowed|
+      assert_not michael.feed.include?(post_unfollowed)
+    end
+  end
 end

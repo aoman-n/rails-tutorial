@@ -100,7 +100,12 @@ class User < ApplicationRecord
 
   # feedメソッドの試作
   def feed
-    Micropost.where('user_id = ?', id)
+    # Micropost.where('user_id IN (?) OR user_id = ?',  following_ids, id)
+    # Micropost.where('user_id = ?', id)
+    # Micropost.where('user_id IN (:following_ids) OR user_id = :user_id', following_ids: following_ids, user_id: id)
+    # サブクエリを利用しSQLを一文で取得できるようにしている
+    following_ids = "SELECT followed_id FROM relationships where follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   # 現在のユーザーがフォローしていたらtrueを返す
